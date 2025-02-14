@@ -17,7 +17,7 @@ for i, file in enumerate(fits_files):
         print(f"Processing {file}...")
         hdu = hdul[0]  # Open the first HDU
         img = hdu.data  # Extract image data
-        wcs = WCS(hdu.header)  # Extract WCS if available
+        wcs = WCS(hdu.header)  # Extract WCS
         print(f"{file} wcs: ")
         # Define cutout parameters (ensure position is in pixels)
         position = (#x_center, y_center)  # Pixel position (must be integers)

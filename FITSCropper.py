@@ -4,15 +4,6 @@ from astropy.nddata import Cutout2D
 from astropy import units as u
 from astropy.wcs import WCS
 import os
-while True:
-    try:
-        x_center = float(input('What is x-coordinate for the center of your desired region, in pixels?'))
-        y_center = float(input('What is y-coordinate for the center of your desired region, in pixels?'))
-        height = float(input('What is your desired region height, in pixels?'))
-        width = float(input('What is your desired image width, in pixels?'))
-        break
-    except ValueError:
-        print('Please input a float')
 
 fits_files = [
     #enter the name of your FITS files as a list, seperated by commas
@@ -29,13 +20,13 @@ for i, file in enumerate(fits_files):
         wcs = WCS(hdu.header)  # Extract WCS if available
         print(f"{file} wcs: ")
         # Define cutout parameters (ensure position is in pixels)
-        position = (x_center, y_center)  # Pixel position (must be integers)
-        size = (height, width)  # Size in pixels (height, width)
+        position = (#x_center, y_center)  # Pixel position (must be integers)
+        size = (#height, width)  # Size in pixels (height, width)
 
         # Create cutout
         cutout = Cutout2D(img, position=position, size=size, wcs=wcs)
 
-        # Update FITS HDU, MATCHES HEADER, COMMENT OUT IF YOU DONT WANT TO MATCH HEADERS
+        # Update FITS HDU
         hdu.data = cutout.data
         hdu.header.update(cutout.wcs.to_header())
 
